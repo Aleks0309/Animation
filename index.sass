@@ -1,0 +1,169 @@
+$colors: red, green, blue, yellow
+@for $i from 1 through length($colors)
+    $thisColor: nth($colors, $i)
+    .block:nth-child(#{$i})
+        background-color: #{$thisColor}
+     
+
+.animations
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    border: 1px solid black
+
+    .animation1
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: center
+        align-items: center
+        width: 200px
+        height: 200px
+        border: 1px solid red
+        color: #1fdfe1
+        font-size: 30px
+        font-weight: bolder
+        cursor: pointer
+        .scale            
+            animation: first 1s linear 999  
+    
+    .animation2
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+        justify-content: center
+        align-items: center
+        width: 200px
+        height: 200px
+        border: 1px solid red
+        position: relative
+        &:nth-child(2)
+            position: relative
+        &:after
+            content: "Hi!"
+            position: absolute
+            z-index: -1
+            font-size: 25px
+        .block
+            width: 50%
+            height: 50%
+            transition: transform 0.5s linear
+            &:nth-child(1)                
+                transform-origin: top left
+            &:nth-child(2)
+                transform-origin: top right
+            &:nth-child(3)
+                transform-origin: bottom left
+            &:nth-child(4)
+                transform-origin: bottom right
+        &:hover
+            .block                
+                &:nth-child(1) 
+                    transform: rotate(90deg)
+                &:nth-child(2)
+                    transform: rotate(-90deg)
+                &:nth-child(3)
+                    transform: rotate(-90deg)
+                &:nth-child(4)
+                    transform: rotate(90deg)   
+
+    .animation3
+        width: 200px
+        height: 200px
+        border: 1px solid red
+        display: flex
+        flex-direction: row
+        justify-content: center
+        align-items: center
+        position: relative
+        .coob1
+            animation: coob1 3s linear 0s 999 
+            position: absolute
+            display: flex
+            flex-direction: row
+            justify-content: center
+            align-items: center
+            z-index: 1
+            background-color: red
+            width: 100px
+            height: 100px
+            .coob2 
+                animation: coob2 2.5s linear 0s 999
+                position: absolute
+                display: flex
+                flex-direction: row
+                justify-content: center
+                align-items: center
+                z-index: 2
+                background-color: green
+                width: 80px
+                height: 80px
+                .coob3
+                    animation: coob3 2s linear 0s 999
+                    position: absolute
+                    background-color: blue
+                    z-index: 3
+                    width: 50px
+                    height: 50px       
+
+@keyframes first
+    0%
+        transform: scale(0)
+    40%
+        transform: scale(0)
+    60%
+        transform: scale(1.2)
+    100%
+        transform: scale(1)
+
+@keyframes coob1
+    0%
+        transform: rotate(0deg)
+        background-color: red
+    25%
+        transform: rotate(90deg)
+        background-color: green
+    50%
+        transform: rotate(180deg)
+        background-color: blue
+    75%
+        transform: rotate(270deg)
+        background-color: yellow    
+    100%
+        transform: rotate(360deg)
+        background-color: pink       
+
+@keyframes coob2
+    0%
+        transform: rotate(0deg)
+        background-color: green
+    25%
+        transform: rotate(90deg)
+        background-color: blue
+    50%
+        transform: rotate(180deg)
+        background-color: yellow
+    75%
+        transform: rotate(270deg)
+        background-color: pink    
+    100%
+        transform: rotate(360deg)
+        background-color: red
+
+@keyframes coob3
+    0%
+        transform: rotate(0deg)
+        background-color: blue
+    25%
+        transform: rotate(90deg)
+        background-color: yellow
+    50%
+        transform: rotate(180deg)
+        background-color: pink
+    75%
+        transform: rotate(270deg)
+        background-color: red    
+    100%
+        transform: rotate(360deg)
+        background-color: green              
